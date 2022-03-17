@@ -1,4 +1,4 @@
-type functionType = (a: string) => number;
+ type functionType = (a: string) => number;
 
 let myFunc:functionType = function (a) { 
     return +a
