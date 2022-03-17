@@ -6,5 +6,10 @@
 
 npx create-react-app ProjectName --template typescript
 
+npm install redux
+
+npm install react-redux
+
+npm install @reduxjs/toolkit
 
 ```

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState,increment, decrement } from './index';
+import { Dispatch } from 'redux';
 
 let a: string = 'a에용'
 
@@ -8,7 +11,10 @@ let a: string = 'a에용'
 let box: JSX.IntrinsicElements['div'] = <div>{a}</div>
 
 function App() {
+  const getStateData = useSelector((state : RootState) => state )
 
+  const dispatch:Dispatch = useDispatch()
+  
   // 타입지정 auto
   let [user, setUser] = useState<string | number>('kim')
 
@@ -29,6 +35,10 @@ function App() {
         </a>
         {box}
         <Profile name="chulsu" age={20}></Profile>
+        {getStateData.counter1.user}
+        {getStateData.counter1.count}
+        <button onClick={() => { dispatch(increment()) }}>증가</button>
+        <button onClick={() => { dispatch(decrement()) }}>감소</button>
       </header>
     </div>
   );
@@ -41,7 +51,10 @@ function App() {
 // props 타입지정 props는 object가 default 
 function Profile(props: {name : string, age : number}) :JSX.Element { 
   return (
-    <div>프로필입니다.</div>
+    <div>
+      {props.name}
+      {props.age}
+    </div>
   )
 }
 
